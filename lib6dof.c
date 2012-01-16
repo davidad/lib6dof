@@ -8,7 +8,7 @@ struct l6dof_ctx {
   l6dof_button_cb_t button_cb;
 };
 
-l6dof_t* l6dof_init(void) {
+l6dof_t* l6dof_open(void) {
   hid_device* dev = NULL;
   unsigned short product_ids[] = {0xc625,0xc626,0xc627,0xc623,0x0};
   unsigned short *product_id = product_ids;
