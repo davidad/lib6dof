@@ -4,6 +4,7 @@ DYLIB =
 
 UNAME := $(shell uname)
 ifeq ($(UNAME), Darwin)
+CFLAGS += -fnested-functions
 HIDC = hidapi/mac/hid.c
 DYLIB = -dynamiclib
 LIBS += -framework IOKit -framework CoreFoundation
@@ -19,7 +20,10 @@ default:
 	git submodule update
 	make $(OUTPUT)
 
-CFLAGS = -I.
+example: example.c lib6dof.h
+	gcc $(CFLAGS) $(LIBS) -o example example.c -l6dof -lcurses
+
+CFLAGS += -I.
 
 $(OUTPUT): lib6dof.c lib6dof.h $(HIDC)
 	gcc $(CFLAGS) $(LIBS) -o $(OUTPUT) lib6dof.c $(HIDC) $(DYLIB)
