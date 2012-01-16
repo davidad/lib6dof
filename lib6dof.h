@@ -9,12 +9,12 @@ l6dof_t* l6dof_open(void);
 //Setting up callbacks
 
 typedef enum {
-  L6DOF_AXIS_TRANSLATE_X=0,
-  L6DOF_AXIS_TRANSLATE_Y,
-  L6DOF_AXIS_TRANSLATE_Z,
-  L6DOF_AXIS_ROTATE_X,
-  L6DOF_AXIS_ROTATE_Y,
-  L6DOF_AXIS_ROTATE_Z
+  L6DOF_TRANSLATE_X=0,
+  L6DOF_TRANSLATE_Y,
+  L6DOF_TRANSLATE_Z,
+  L6DOF_ROTATE_X,
+  L6DOF_ROTATE_Y,
+  L6DOF_ROTATE_Z
 } l6dof_axis_t;
 typedef void (*l6dof_axis_cb_t)(l6dof_axis_t, signed short pos);
 
