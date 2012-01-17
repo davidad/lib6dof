@@ -4,7 +4,6 @@ DYLIB =
 
 UNAME := $(shell uname)
 ifeq ($(UNAME), Darwin)
-CFLAGS += -fnested-functions
 HIDC = hidapi/mac/hid.c
 DYLIB = -dynamiclib
 LIBS += -framework IOKit -framework CoreFoundation

@@ -17,6 +17,7 @@ l6dof_t* l6dof_open(void) {
     if(*product_id==0x0) break;
   }
   if(dev) {
+    hid_set_nonblocking(dev,1);
     l6dof_t* ctx = malloc(sizeof(l6dof_t));
     ctx->dev=dev;
     ctx->axis_cb=NULL;
