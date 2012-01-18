@@ -17,21 +17,15 @@ int main(void) {
 
   double pos[6]={0.0};
   void axis_callback(l6dof_axis_t axis, signed short input) {
-    pos[axis]=(double)input/2048.0;
+    pos[axis]=(double)input/512.0;
   }
   l6dof_axis_callback(l6dof,axis_callback);
-
-  char buttons[BUTTONS]={0};
-  void button_callback(l6dof_button_t button, char on) {
-    buttons[button]=on;
-  }
-  l6dof_button_callback(l6dof,button_callback);
 
   printf("\n\n\n\n\n\n\n");
   ESCDELAY=25; //Curses waits too long for key sequences by default
   while(getch()!=27) {
 
-    printf("\e[6A");
+    printf("\e[6A\e[80D");
 
     int axis;
     for(axis=0;axis<6;axis++) {
@@ -42,11 +36,6 @@ int main(void) {
         printf((i==x)?"X":" ");
       }
       printf("]\n");
-    }
-
-    int button;
-    for(button=0;button<BUTTONS;button++) {
-      printf("[ %c ]  ",buttons[BUTTONS]?'X':' ');
     }
 
     l6dof_check_for_events(l6dof);
