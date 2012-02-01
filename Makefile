@@ -4,7 +4,6 @@ DYLIB =
 
 UNAME := $(shell uname)
 ifeq ($(UNAME), Darwin)
-CFLAGS += -fnested-functions
 HIDC = hidapi/mac/hid.c
 DYLIB = -dynamiclib
 LIBS += -framework IOKit -framework CoreFoundation
@@ -21,7 +20,7 @@ default:
 	make $(OUTPUT)
 
 example: example.c lib6dof.h
-	gcc $(CFLAGS) $(LIBS) -o example example.c -l6dof -lcurses
+	gcc -fnested-functions $(CFLAGS) $(LIBS) -o example example.c -l6dof -lcurses
 
 CFLAGS += -I.
 
