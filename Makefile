@@ -12,7 +12,7 @@ OUTPUT = lib6dof.dylib
 endif
 ifeq ($(UNAME), Linux)
 HIDC = hidapi/linux/hid.c
-DYLIB = -shared
+DYLIB = -shared -fPIC
 OUTPUT = lib6dof.so
 endif
 
